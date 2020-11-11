@@ -2,6 +2,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
 
 
 const farmerOneRouter = require("./routes/farmer-ones");
@@ -15,6 +16,14 @@ const port = process.env.PORT || 3000;
 // ----- MIDDLEWARE -----
 app.use(morgan("combined"));
 app.use(express.json());
+
+// ----- DATABASE -----
+mongoose
+    .connect("mongodb://localhost:27017/u-farm", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => console.log("DB Connection Succesful 😃 ✅"));
 
 
 // ------- ROUTES -------
