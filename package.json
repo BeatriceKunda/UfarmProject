@@ -1,0 +1,28 @@
+{
+  "name": "ufarm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BeatriceKunda/UfarmProject.git"
+  },
+  "author": "Beatrice Akatukunda",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.15",
+    "morgan": "^1.10.0",
+    "pug": "^2.0.4",
+    "validator": "^13.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/BeatriceKunda/UfarmProject/issues"
+  },
+  "homepage": "https://github.com/BeatriceKunda/UfarmProject#readme"
+}

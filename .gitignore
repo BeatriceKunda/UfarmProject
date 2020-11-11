@@ -1,0 +1,5 @@
+# npm folders
+node_modules/
+
+# environment files
+.env
