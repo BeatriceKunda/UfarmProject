@@ -3,6 +3,9 @@ const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 
+
+const farmerOneRouter = require("./routes/farmer-ones");
+
 // load all environment variables in the .env file
 dotenv.config({ path: './.env' });
 
@@ -18,6 +21,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.status(200).json({ message: "It Works !!!" });
 });
+
+app.use("/farmer-one", farmerOneRouter); // farmer-one router
 
 
 // ------ LISTENING  ------
