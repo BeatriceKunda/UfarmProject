@@ -106,11 +106,11 @@ const revokeExistingWardAssignment = async (req, res, next) => {
     // deactivate any active FOs with that ward
     try {
         const formerWardFo = await FarmerOnes.findOne({ ward: req.ward, active: true });
-        
+
         formerWardFo.active = false;
         formerWardFo.decommissionedOn = Date.now();
         formerWardFo.save({ validateBeforeSave: false });
-        
+
         console.log("An Existing FO with that ward has been deactivated");
         next();
     } catch (error) {
@@ -134,6 +134,25 @@ const assignWardToFarmerOne = async (req, res) => {
     }
 };
 
+const deactivateFarmerOne = async (req, res) => {
+    try {
+        const farmerOne = await FarmerOnes.findById(req.params.id);
+        if (!farmerOne.active)
+            return res.status(200).json({
+                message: "FO already inactive",
+            });
+        farmerOne.active = false;
+        farmerOne.decommissionedOn = Date.now();
+        await farmerOne.save({ validateBeforeSave: false });
+        res.status(200).json({ message: "successful deactivation", farmerOne });
+    } catch (error) {
+        return res.status(404).json({
+            message: "Could not update FO with that ID as it is not Found",
+            error: error,
+        });
+    }
+};
+
 module.exports = {
     getAllFarmerOnes,
     addNewFarmerOne,
@@ -141,5 +160,6 @@ module.exports = {
     editSpecificFarmerOne,
     isFOactive,
     revokeExistingWardAssignment,
-    assignWardToFarmerOne
+    assignWardToFarmerOne,
+    deactivateFarmerOne
 };
