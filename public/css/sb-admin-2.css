@@ -3241,7 +3241,7 @@ input[type="button"].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #4e73df;
+  background-color: #128c7e;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -11317,7 +11317,7 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .datepicker {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -11332,4 +11332,26 @@ body.sidebar-toggled footer.sticky-footer {
 
 .datepicker-dropdown {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-link {
+  color: #128c7e;
+}
+
+.custom-link:hover{
+  color: #075e54;
+}
+
+.custom-link:hover, .custom-link:focus {
+  text-decoration: none;
+}
+
+.custom-link.disabled {
+  color: #858796;
+  pointer-events: none;
+  cursor: default;
+}
+
+.paginate_button {
+  color: #128c7e;
 }
