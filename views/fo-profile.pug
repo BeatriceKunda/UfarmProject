@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+html(lang="en")
+
+head 
+    meta(charset="UTF-8")
+    meta(name="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="")
+    meta(name="author" content="Beatrice Akatukunda")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+    link(rel="stylesheet" href="/vendor/fontawesome-free/css/all.min.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i")
+    link(rel="stylesheet" href="/css/sb-admin-2.css")
+
+    title Edit Farmer One | UFarm
+
+body#page-top
+    #wrapper
+        ul.navbar-nav.bg-gradient-custom.sidebar.sidebar-dark.accordion#accordionSidebar
+            a.sidebar-brand.d-flex.align-items-center.justify-content-center(href="/ao-dashboard")
+                .sidebar-brand-icon.rotate-n-15
+                    i.fas.fa-tractor
+                .sidebar-brand-text.mx-3
+                    img.img-fluid(src="/img/UFARM.png" alt="dashboard-logo")
+            hr.sidebar-divider.my-0
+            li.nav-item.active
+                a.nav-link(href="/ao-dashboard")
+                    span Dashboard
+            hr.sidebar-divider
+            .sidebar-heading Farmer One
+            li.nav-item
+                a.nav-link(href="/add-farmer-one")
+                    i.fas.fa-fw.fa-user
+                    span Add Farmer One
+            li.nav-item
+                a.nav-link(href="/manage-farmer-ones")
+                    i.fas.fa-fw.fa-users
+                    span Manage Your FOs
+            hr.sidebar-divider.d-none.d-md-block
+            .text-center.d-none.d-md-inline
+                button.rounded-circle.border-0#sidebarToggle
+        
+        .d-flex.flex-column#content-wrapper
+            #content
+                nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+                    button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+                        i.fa.fa-bars
+                    ul.navbar-nav.ml-auto
+                        li.nav-item.dropdown.no-arrow.d-sm-none
+                            a.nav-link.dropdown-toggle(href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                i.fas.fa-search.fa-fw
+                            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in
+                                form.form-inline.mr-auto.w-100.navbar-search
+                                    .input-group
+                                        input.form-control.bg-light.border-0.small(type="text" aria-label="Search" aria-describedby="basic-addon2" placeholder="Search for...")
+                                        .input-group-append
+                                            button.btn.btn-custom(type="button")
+                                                i.fas.fa-search.fa-sm
+                        .topbar-divider.d-none.d-sm-block
+                        li.nav-item.dropdown.no-arrow
+                            a.nav-link.dropdown-toggle#userDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                span.mr-2.d-none.d-lg-inline.text-gray-600.small Agricultural Officer
+                                img.img-profile.rounded-circle(src="/img/undraw_profile.svg")
+                            .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown")
+                                a.dropdown-item(href="#") Profile &nbsp;
+                                    i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                                a.dropdown-item(href="#") Settings &nbsp;
+                                    i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                                .dropdown-divider
+                                a.dropdown-item(href="#" data-toggle="modal" data-target="#logoutModal") Logout &nbsp;
+                                    i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                
+                .container.mt-4.mw-100
+                    nav.nav.nav-borders
+                        a.nav-link.active.ml-0.text-custom(href=`/farmer-one/${farmerOne._id}`) Profile
+                        a.nav-link.disabled(href="#") Settings
+                        a.nav-link.disabled(href="#") Security
+                        a.nav-link.disabled(href="#") Notifications
+
+                    hr.mt-0.mb-4
+
+                    .row
+                        .col-xl-4
+                            .card
+                                .card-header.text-custom Profile Picture
+                                .card-body.text-center
+                                    img.img-account-profile.rounded-circle.mb-2(src=`/img/${farmerOne.profilePic}.svg` style="height: 10rem")
+                                    .small.font-italic.text-muted.mb-4 JPG or PNG no larger than 5 MB
+                                    button.btn.btn-custom(type="button") Upload new image
+                        .col-xl-8
+                            .card.mb-4
+                                .card-header.text-custom Account Details
+                                .card-body
+                                    form
+                                        .form-group
+                                            label.small.mb-1(for="name") Name
+                                            input.form-control#name(type="text" value=`${farmerOne.name}` readonly)
+                                        .form-row
+                                            .form-group.col-md-6
+                                                label.small.mb-1(for="registeredOn") Registered On
+                                                input.form-control#registeredOn(type="text" value=`${prettyDate(farmerOne.registeredOn)}` readonly)
+                                            .form-group.col-md-6
+                                                label.small.mb-1(for="unique-id") Unique ID
+                                                input.form-control#unique-id(type="text" value=`${farmerOne.uniqueNumber}` readonly)
+                                        .form-row
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="gender") Gender
+                                                input.form-control#gender(type="text" value=`${farmerOne.gender}` readonly)
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="date-of-birth") Date of Birth
+                                                input.form-control#date-of-birth(type="text" value=`${prettyDate(farmerOne.dateOfBirth)}` readonly)
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="status") Status
+                                                if farmerOne.active
+                                                    input.form-control#status(type="text" value='Active' readonly)
+                                                else  
+                                                    input.form-control#status(type="text" value='Inactive' readonly)
+                                        .form-row
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="inputPhone") Phone Number
+                                                input.form-control#inputPhone(type="tel" name="phoneNumber" placeholder="Phone number" value=`${farmerOne.phoneNumber}`)
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="inputEmailAddress") Email Address
+                                                input.form-control#inputEmailAddress(type="email" placeholder="Email address" value=`${farmerOne.email}` readonly)
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="nin") NIN
+                                                input.form-control#nin(type="text" value=`${farmerOne.nin}` readonly)
+                                        
+                                        hr.mt-1.mb-1
+
+                                        .form-row
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="ward") Ward
+                                                input.form-control#ward(type="text" value=`${farmerOne.ward}` readonly)
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="residenceType") Residence Type
+                                                input.form-control#residenceType(type="text" value=`${farmerOne.residenceType}` readonly style="text-transform:capitalize")
+                                            .form-group.col-md-4
+                                                label.small.mb-1(for="periodOfWardStay") Period Of Stay
+                                                input.form-control#periodOfWardStay(type="text" value=`${farmerOne.periodOfWardStay}` readonly)
+                                        .form-group
+                                            label.small.mb-1(for="homeDirections") Directions to Home
+                                            input.form-control#homeDirections(type="text" value=`${farmerOne.homeDirections}` readonly)
+                                        .form-row
+                                            .form-group.col-md-12
+                                                label.small.mb-1(for="activities") Activities
+                                                textarea.form-control#activities(name="activities", cols="30", rows="5" placeholder="Activities")= farmerOne.activities
+                                        button.btn.btn-custom Update Details
+
+            footer.sticky-footer.bg-white
+                .container.my-auto
+                    .copyright.text-center.my-auto
+                        span Copyright &copy; U Farm 2020
+    
+    .modal.fade#logoutModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+        .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    h5.modal-title#exampleModalLabel Ready to Leave?
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true")
+                .modal-body Select "Logout" below if you are ready to end your current session.
+                .modal-footer
+                    button.btn.btn-secondary(type="button" data-dismiss="modal") Cancel
+                    a.btn.btn-custom(href="/login") Logout
+    
+    
+    script(src="/vendor/jquery/jquery.min.js")
+    script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    script(src="/vendor/jquery-easing/jquery.easing.min.js")
+    script(src="/js/sb-admin-2.min.js")
+
+-function prettyDate(date){
+    -var d = date.getDate();
+    -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    -var m = monthNames[date.getMonth()];
+    -var y = date.getFullYear();
+    -return d+' '+m+' '+y;
+-}  

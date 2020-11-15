@@ -7,6 +7,7 @@ router.get('/login', viewsController.login);
 router.get("/ao-dashboard", viewsController.dashboard);
 router.get('/add-farmer-one', viewsController.addFarmerOne);
 router.get('/manage-farmer-ones', viewsController.managerFarmerOnes);
+router.get('/farmer-one/:id', viewsController.editFarmerOne)
 
 
 module.exports = router;

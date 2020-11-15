@@ -79,10 +79,12 @@ body#page-top
                                 .card.shadow.mb-4
                                     .card-body
                                         .text-center
-                                            img.img-fluid.px-3.px-sm-4.mt-3.mb-4(src=`/img/${farmer.profilePic}.svg` style="width: 15rem" alt="")
+                                            a.custom-link(href=`/farmer-one/${farmer._id}`)
+                                                img.img-fluid.px-3.px-sm-4.mt-3.mb-4(src=`/img/${farmer.profilePic}.svg` style="width: 15rem" alt="")
                                         .row.no-gutters.align-items-center
                                             .col.mr-2
-                                                .font-weight-bold.text-custom.text-uppercase.text-center.mb-3= farmer.name
+                                                a.custom-link(href=`/farmer-one/${farmer._id}`)    
+                                                    .font-weight-bold.text-custom.text-uppercase.text-center.mb-3= farmer.name
                                                 .h6.font-weight-light.text-center.text-gray-600= farmer.active = true ? 'Active' : 'Inactive'
                                                     | &nbsp; | &nbsp;
                                                     = farmer.gender
@@ -94,7 +96,7 @@ body#page-top
                                                 .p.mb-2 Ward: &nbsp;
                                                     span.font-weight-bold.text-gray-700= farmer.ward
                                         p= farmer.activities
-                                        a.text-custom(href="#") View Profile &rarr;
+                                        a.custom-link(href=`/farmer-one/${farmer._id}`) View Profile &rarr;
                         
             footer.sticky-footer.bg-white
                 .container.my-auto

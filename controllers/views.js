@@ -22,4 +22,9 @@ const managerFarmerOnes = async (req, res) => {
     res.status(200).render("manage-farmer-ones", { farmerOnes });
 };
 
-module.exports = { login, dashboard, addFarmerOne, managerFarmerOnes };
+const editFarmerOne = async (req, res) => {
+    const farmerOne = await FarmerOnes.findById(req.params.id);
+    res.status(200).render("fo-profile", { farmerOne });
+}
+
+module.exports = { login, dashboard, addFarmerOne, managerFarmerOnes, editFarmerOne };
