@@ -66,4 +66,80 @@ const editSpecificFarmerOne = async (req, res) => {
     }
 };
 
-module.exports = { getAllFarmerOnes, addNewFarmerOne, getSpecificFarmerOne, editSpecificFarmerOne };
+
+// ----- ASSIGNING FO TO WARD ----------
+/* Incolves 3 steps-> 
+    1. Check if FO is active
+    2. Revoke any existing FO' ward assignment (This will deactivate the FO)
+    3. Assign the new FO a ward
+*/
+
+const isFOactive = async (req, res, next) => {
+    try {
+        const farmerOne = await FarmerOnes.findById(req.params.id);
+        // if the FO is inactive, do no assign ward
+        if (!farmerOne.active)
+            return res.status(400).json({
+                message: "FarmerOne is inactive and cannot be assigned to Ward",
+            });
+
+        // check if the active FO alread has this ward
+        if (farmerOne.ward === req.body.ward) {
+            return res.status(400).json({
+                message: "Cannot ressign the same ward to FO",
+            });
+        }
+
+        req.farmerOne = farmerOne;
+        req.ward = req.body.ward;
+        console.log("Attempting to assign ward to FO");
+        next();
+    } catch (error) {
+        return res.status(404).json({
+            message: "Could find an FO with that ID",
+            error: error,
+        });
+    }
+};
+
+const revokeExistingWardAssignment = async (req, res, next) => {
+    // deactivate any active FOs with that ward
+    try {
+        const formerWardFo = await FarmerOnes.findOne({ ward: req.ward, active: true });
+        
+        formerWardFo.active = false;
+        formerWardFo.decommissionedOn = Date.now();
+        formerWardFo.save({ validateBeforeSave: false });
+        
+        console.log("An Existing FO with that ward has been deactivated");
+        next();
+    } catch (error) {
+        // Move ON if NO active FOs with the ward have been found
+        next();
+    }
+};
+
+const assignWardToFarmerOne = async (req, res) => {
+    // assign ward to the new FO
+    try {
+        const farmerOne = req.farmerOne;
+        farmerOne.ward = req.body.ward;
+        farmerOne.save({ validateBeforeSave: false });
+        res.status(200).json({ message: "successfully assigned ward", farmerOne });
+    } catch (error) {
+        res.status(404).json({
+            message: "Could not Assign Ward to FO with that ID as it is not Found",
+            error: error,
+        });
+    }
+};
+
+module.exports = {
+    getAllFarmerOnes,
+    addNewFarmerOne,
+    getSpecificFarmerOne,
+    editSpecificFarmerOne,
+    isFOactive,
+    revokeExistingWardAssignment,
+    assignWardToFarmerOne
+};
