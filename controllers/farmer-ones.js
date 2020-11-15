@@ -17,5 +17,15 @@ const addNewFarmerOne = async (req, res) => {
     }
 }
 
+const getSpecificFarmerOne = async (req, res) => {
+    try {
+      const farmerOne = await FarmerOnes.findById(req.params.id);
+      res.status(200).json({ message: "success", farmerOne: farmerOne });
+    } catch (error) {
+      // console.log(error);
+      res.status(404).json({ message: "No FO Found with That Id" });
+    }
+  };
 
-module.exports = { getAllFarmerOnes, addNewFarmerOne };
+
+module.exports = { getAllFarmerOnes, addNewFarmerOne,  getSpecificFarmerOne };
