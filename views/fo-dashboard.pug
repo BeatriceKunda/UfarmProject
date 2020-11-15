@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+html(lang="en")
+
+head 
+    meta(charset="UTF-8")
+    meta(name="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="")
+    meta(name="author" content="Beatrice Akatukunda")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+    link(rel="stylesheet" href="/vendor/fontawesome-free/css/all.min.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i")
+    link(rel="stylesheet" href="/css/sb-admin-2.css")
+    link(rel="stylesheet" href="/vendor/datatables/dataTables.bootstrap4.min.css")
+
+    title AO Dashboard | UFarm
+
+body#page-top
+    #wrapper
+        ul.navbar-nav.bg-gradient-custom.sidebar.sidebar-dark.accordion#accordionSidebar
+            a.sidebar-brand.d-flex.align-items-center.justify-content-center(href="/ao-dashboard")
+                .sidebar-brand-icon.rotate-n-15
+                    i.fas.fa-tractor
+                .sidebar-brand-text.mx-3
+                    img.img-fluid(src="/img/UFARM.png" alt="dashboard-logo")
+            hr.sidebar-divider.my-0
+            li.nav-item.active
+                a.nav-link(href="/fo-dashboard")
+                    span Dashboard
+            hr.sidebar-divider
+            .sidebar-heading Farmer One
+            li.nav-item
+                a.nav-link(href="/add-urban-farmer")
+                    i.fas.fa-fw.fa-user
+                    span Add Urban Farmer
+            li.nav-item
+                a.nav-link(href="/produce-approvals")
+                    i.fas.fa-fw.fa-users
+                    span Produce Approvals
+                    span.badge.badge-warning.badge-counter 18
+            hr.sidebar-divider.d-none.d-md-block
+            .text-center.d-none.d-md-inline
+                button.rounded-circle.border-0#sidebarToggle
+        
+        .d-flex.flex-column#content-wrapper
+            #content
+                nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+                    button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+                        i.fa.fa-bars
+                    ul.navbar-nav.ml-auto
+                        li.nav-item.dropdown.no-arrow.d-sm-none
+                            a.nav-link.dropdown-toggle(href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                i.fas.fa-search.fa-fw
+                            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in
+                                form.form-inline.mr-auto.w-100.navbar-search
+                                    .input-group
+                                        input.form-control.bg-light.border-0.small(type="text" aria-label="Search" aria-describedby="basic-addon2" placeholder="Search for...")
+                                        .input-group-append
+                                            button.btn.btn-custom(type="button")
+                                                i.fas.fa-search.fa-sm
+                        .topbar-divider.d-none.d-sm-block
+                        li.nav-item.dropdown.no-arrow
+                            a.nav-link.dropdown-toggle#userDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                span.mr-2.d-none.d-lg-inline.text-gray-600.small Agricultural Officer
+                                img.img-profile.rounded-circle(src="/img/undraw_profile.svg")
+                            .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown")
+                                a.dropdown-item(href="#") Profile &nbsp;
+                                    i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                                a.dropdown-item(href="#") Settings &nbsp;
+                                    i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                                .dropdown-divider
+                                a.dropdown-item(href="#" data-toggle="modal" data-target="#logoutModal") Logout &nbsp;
+                                    i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                
+                .container-fluid
+                    h1.h3.mb-2.text-gray-800 Dashboard
+                    .row
+                        .col-xl-3.col-md-6.mb-4
+                            .card.border-left-primary.shadow.h-100.py-2
+                                .card-body
+                                    .row.no-gutters.align-items-center
+                                        .col.mr-2
+                                            .text-xs.font-weight-bold.text-primary.text-uppercase.mb-1 Registered UFs
+                                            .h5.mb-0.font-weight-bold.text-gray-800 150
+                                        .col-auto
+                                            i.fas.fa-calendar.fa-2x.text-gray-300
+                        
+                        .col-xl-3.col-md-6.mb-4 
+                            .card.border-left-success.shadow.h-100.py-2
+                                .card-body
+                                    .row.no-gutters.align-items-center
+                                        .col.mr-2
+                                            .text-xs.font-weight-bold.text-success.text-uppercase.mb-1 UF Produce Sold
+                                            .h5.mb-0.font-weight-bold.text-gray-800 715
+                                        .col-auto
+                                            i.fas.fa-dollar-sign.fa-2x.text-gray-300
+                        
+                        .col-xl-3.col-md-6.mb-4
+                            .card.border-left-info.shadow.h-100.py-2
+                                .card-body
+                                    .row.no-gutters.align-items-center
+                                        .col.mr-2
+                                            .text-xs.font-weight-bold.text-info.text-uppercase.mb-1 Bookings and Orders
+                                            .row.no-gutters.align-items-center
+                                                .col-auto
+                                                    .h5.mb-0.font-weight-bold.text-gray-800 853
+                                                .col
+                                                    .progress.progress-sm.mr-2
+                                                        .progress-bar.bg-info(role="progressbar" style="width: 50%"  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100")
+                                        .col-auto
+                                            i.fas.fa-clipboard-list.fa-2x.text-gray-300
+
+                        .col-xl-3.col-md-6.mb-4
+                            .card.border-left-warning.shadow.h-100.py-2
+                                .card-body
+                                    .row.no-gutters.align-items-center
+                                        .col.mr-2
+                                            .text-xs.font-weight-bold.text-warning.text-uppercase.mb-1 Pending Approvals
+                                            .h5.mb-0.font-weight-bold.text-gray-800 18
+                                        .col-auto
+                                            i.fas.fa-comments.fa-2x.text-gray-300
+
+                    .card.shadow.mb-4
+                        .card-header.py-3
+                            h6.m-0.font-weight-bold.text-custom Your Urban Farmers
+                        .card-body
+                            .table-responsive
+                                table.table.table-bordered#dataTable(width="100%" cellspacing="0")
+                                    thead
+                                        tr
+                                            th Name
+                                            th Produce Type
+                                            th Unit Price (UGX)
+                                            th Mode of Payment
+                                            th Mode of Delivery
+                                            th Orders Received
+                                    tbody
+                                        tr
+                                            td Abdu Rashid
+                                            td organic
+                                            td 10,000
+                                            td cash
+                                            td pick up
+                                            td 22
+                                        tr
+                                            td Katunu Abraham
+                                            td organic
+                                            td 9,000
+                                            td mobile money
+                                            td home delivery
+                                            td 25
+                                        tr
+                                            td Kakooza Jerry
+                                            td non organic
+                                            td 15,000
+                                            td both
+                                            td both
+                                            td 45
+                                        tr
+                                            td Jessica Atim
+                                            td organic
+                                            td 12,000
+                                            td cash
+                                            td both
+                                            td 10
+                                        tr
+                                            td Kasozi Richard
+                                            td organic
+                                            td 5,000
+                                            td mobile money
+                                            td home delivery
+                                            td 57
+                                        tr
+                                            td Aisha Nambi
+                                            td organic
+                                            td 8,000
+                                            td cash
+                                            td pick up
+                                            td 77
+                                        tr
+                                            td Mugenyi Roy
+                                            td non organic
+                                            td 18,000
+                                            td mobile money
+                                            td home delivery
+                                            td 36
+                                        tr
+                                            td Kanyankole Ivan
+                                            td organic
+                                            td 16,000
+                                            td mobile mobey 
+                                            td both
+                                            td 7
+                                        tr
+                                            td Odongkara Francis
+                                            td organic
+                                            td 12,000
+                                            td cash
+                                            td pick up
+                                            td 19
+                                        tr
+                                            td Rwot Lenny
+                                            td organic
+                                            td 25,000
+                                            td both
+                                            td both
+                                            td 42
+                                        tr
+                                            td Mugisha Anthony
+                                            td non organic
+                                            td 22,000
+                                            td both
+                                            td pick up
+                                            td 23
+                                        tr
+                                            td Ankunda Luna
+                                            td organic
+                                            td 10,000
+                                            td both
+                                            td both
+                                            td 96
+                                        tr
+                                            td Kitandwe Cosmas
+                                            td non organic
+                                            td 14,000
+                                            td cash
+                                            td home delivery
+                                            td 17
+
+            footer.sticky-footer.bg-white
+                .container.my-auto
+                    .copyright.text-center.my-auto
+                        span Copyright &copy; U Farm 2020
+    
+    .modal.fade#logoutModal(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+        .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    h5.modal-title#exampleModalLabel Ready to Leave?
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true")
+                .modal-body Select "Logout" below if you are ready to end your current session.
+                .modal-footer
+                    button.btn.btn-secondary(type="button" data-dismiss="modal") Cancel
+                    a.btn.btn-custom(href="/login") Logout
+    
+    
+    script(src="/vendor/jquery/jquery.min.js")
+    script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    script(src="/vendor/jquery-easing/jquery.easing.min.js")
+    script(src="/js/sb-admin-2.min.js")
+    script(src="/vendor/datatables/jquery.dataTables.min.js")
+    script(src="/vendor/datatables/dataTables.bootstrap4.min.js")
+    script(src="/js/demo/datatables-demo.js")
+
+
+-function prettyDate(date){
+    -var d = date.getDate();
+    -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    -var m = monthNames[date.getMonth()];
+    -var y = date.getFullYear();
+    -return d+' '+m+' '+y;
+-}                        
