@@ -21,7 +21,8 @@ const getAllFarmerOnes = async (req, res) => {
 }
 
 const addNewFarmerOne = async (req, res) => {
-    // console.log(req.body);
+    // Prevent the ward from being assigned during creation by deleting the field from the req body
+    delete req.body.ward;
     try {
         const farmerOne = await FarmerOnes.create(req.body);
         //  TODO: Add unique ID to FO
