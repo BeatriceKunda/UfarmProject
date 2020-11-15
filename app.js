@@ -34,7 +34,7 @@ mongoose
 
 
 // ------- ROUTES -------
-app.get("/", viewRouter);
+app.use("/", viewRouter);
 
 app.use("/farmer-one", farmerOneRouter); // farmer-one router
 
