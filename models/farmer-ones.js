@@ -7,18 +7,32 @@ const FarmerOne = new Schema({
     dateOfBirth: { type: Date },
     gender: {
         type: String,
-        enum: ["male", "female"],
-        required: [true, "Please specify your Gender"]
+        enum: ["Male", "Female"],
+        required: [true, "Please specify your Gender"],
     },
-    ward: { type: String, required: true },
-    periodOfWardStay: { type: Number, required: true },
+    ward: { type: String },
+    periodOfWardStay: {
+        type: Number,
+        required: true,
+        validate: {
+            validator: function (num) {
+                return num > 10;
+            },
+            message: "FO must have lived in the area for more than 10 years",
+        },
+    },
     homeDirections: { type: String, required: true },
-    residenceType: { type: String, enum: ["permanent", "temporary"], required: true },
+    residenceType: {
+        type: String,
+        enum: ["permanent", "temporary"],
+        required: true,
+    },
     registeredOn: { type: Date, required: true, default: Date.now },
+    decommissionedOn: { type: Date },
     email: {
         type: String,
         lowercase: true,
-        validate: [validator.isEmail, "Please provide a valid Email"]
+        validate: [validator.isEmail, "Please provide a valid Email"],
     },
     phoneNumber: {
         type: String,
@@ -29,13 +43,14 @@ const FarmerOne = new Schema({
             validator: function (num) {
                 return validator.isMobilePhone(num, "en-UG"); // Restrict to UG numbers
             },
-            message: "Please provide a valid Ugandan Mobile Number"
-        }
+            message: "Please provide a valid Ugandan Mobile Number",
+        },
     },
     nin: { type: String, required: true },
     uniqueNumber: { type: String, unique: true },
-    activities: String
-
+    activities: String,
+    active: { type: Boolean, default: true },
+    profilePic: String
 });
 
 module.exports = mongoose.model("FarmerOne", FarmerOne);
