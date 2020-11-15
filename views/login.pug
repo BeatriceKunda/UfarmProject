@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+html(lang="en")
+
+head 
+    meta(charset="UTF-8")
+    meta(name="X-UA-Compatible" content="IE=edge")
+    meta(name="description" content="")
+    meta(name="author" content="Beatrice Akatukunda")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+    link(rel="stylesheet" href="/vendor/fontawesome-free/css/all.min.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i")
+    link(rel="stylesheet" href="/css/sb-admin-2.css")
+
+    title AO | Login
+
+body.bg-gradient-custom
+    .container
+        .row.justify-content-center
+            .col-xl-10.col-lg-12.col-md-9
+                .col-md-4.px-0.mx-auto.d-block.mt-3
+                    img.img-fluid.mx-auto.d-block(src="/img/UFARMLOGOCOVER.png" alt="login-logo")
+                .card.o-hidden.border-0.shadow-lg.my-5
+                    .card-body.p-0
+                        .row
+                            .col-lg-6.d-none.d-lg-block.bg-login-image
+                            .col-lg-6
+                                .p-5
+                                    .text-center
+                                        h2.h4.text-gray-900.mb-4 Welcome Back!
+                                    form.user()
+                                        .form-group
+                                            input.form-control.form-control-user(type="email", id="exampleInputEmail", aria-describedby="emailHelp",  required, onkeyup="this.setAttribute('value', this.value);", placeholder="Enter Email Address...")
+                                        .form-group
+                                            input.form-control.form-control-user(type="password", id="exampleInputPassword", required, onkeyup="this.setAttribute('value', this.value);", placeholder="Password")
+                                        .form-group
+                                            .custom-control.custom-checkbox.small
+                                                input.custom-control-input(type="checkbox", id="customCheck")
+                                                label.custom-control-label Remember Me
+                                        a.btn.btn-custom.btn-user.btn-block(href="/ao-dashboard")
+                                            i.fas.fa-sign-in-alt.fa-lg &nbsp;
+                                            span.h5.mb-2 Login
+                                    hr
+                                    .text-center
+                                        a.small.text-custom(href="#") Forgot Password?
+                                    .text-center
+                                        a.small.text-custom(href="#") Create an Account!
+
+script(src="/vendor/jquery/jquery.min.js")
+script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+script(src="/vendor/jquery-easing/jquery.easing.min.js")
+script(src="/js/sb-admin-2.min.js")
