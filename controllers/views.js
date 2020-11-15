@@ -13,4 +13,9 @@ const dashboard = async (req, res) => {
   res.status(200).render("ao-dashboard", { farmerOnes });
 };
 
-module.exports = { login, dashboard };
+const addFarmerOne = (req, res) => {
+    res.status(200).render("add-farmer-one");
+  };
+  
+
+module.exports = { login, dashboard, addFarmerOne };
