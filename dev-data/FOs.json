@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Muhumuza Raymond",
+      "dateOfBirth": "1991-05-23",
+      "gender": "Male",
+      "periodOfWardStay": 13,
+      "homeDirections": "Near URA Offices",
+      "residenceType": "permanent",
+      "registeredOn": "2020-11-08",
+      "email": "muhumuzaraymond1@gmail.com",
+      "phoneNumber": "+256788123567",
+      "nin": "CMQ3790180UA",
+      "uniqueNumber": "zxc9vbn",
+      "activities": "Training New UFs",
+      "profilePic": "undraw_profile_2"
+    },
+    {
+      "name": "Akello Sandra",
+      "dateOfBirth": "1987-09-19",
+      "gender": "Female",
+      "periodOfWardStay": 11,
+      "homeDirections": "Behind Kamwokya",
+      "residenceType": "permanent",
+      "registeredOn": "2020-11-09",
+      "email": "akellosandra6@gmail.com",
+      "phoneNumber": "+256789987654",
+      "nin": "CKB7904130ZA9",
+      "uniqueNumber": "quks8uc",
+      "activities": "Recruiting new FOs",
+      "profilePic": "undraw_profile_3"
+    },
+    {
+      "name": "Mukiibi Nixon",
+      "dateOfBirth": "1982-05-01",
+      "gender": "Male",
+      "periodOfWardStay": 15,
+      "homeDirections": "Near Sankara Supermarket",
+      "residenceType": "permanent",
+      "registeredOn": "2020-11-09",
+      "email": "mukinix25@gmail.com",
+      "phoneNumber": "+256785012345",
+      "nin": "CUBD70213C7X",
+      "uniqueNumber": "s98l&fz",
+      "activities": "Inpecting New FO produce",
+      "profilePic": "undraw_profile_pic_ic5t"
+    },
+    {
+      "name": "Mugoda Christine",
+      "dateOfBirth": "1988-01-14",
+      "gender": "Female",
+      "periodOfWardStay": 15,
+      "homeDirections": "Behind Maganjo Millers",
+      "residenceType": "permanent",
+      "registeredOn": "2020-11-10",
+      "email": "xtinmugoda5@gmail.com",
+      "phoneNumber": "+256786155863",
+      "nin": "CM3610800SDM",
+      "uniqueNumber": "4e8dhcr",
+      "activities": "Accounting for FO Membership Fees",
+      "profilePic": "undraw_profile_1"
+    }
+]
+  
