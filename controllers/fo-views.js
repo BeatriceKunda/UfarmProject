@@ -1,8 +1,13 @@
-// const UrbanFarmers = require("../models/urban-farmer");
+const UrbanFarmers = require("../models/urban-farmers");
 
 
 const dashboard = async (req, res) => {
-    res.status(200).render("fo-dashboard");
+    const urbanFarmers = await UrbanFarmers.find({});
+    res.status(200).render("fo-dashboard", { urbanFarmers });
 };
 
-module.exports = { dashboard };
+const addUrbanFarmer = async  (req, res) =>  {
+    res.status(200).render("add-urban-farmer");
+}
+
+module.exports = { dashboard, addUrbanFarmer};

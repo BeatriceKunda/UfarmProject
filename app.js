@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 
 const farmerOneRouter = require("./routes/farmer-ones");
 const viewRouter = require("./routes/views");
+const urbanFarmerRouter = require("./routes/urban-farmers");
 
 // load all environment variables in the .env file
 dotenv.config({ path: './.env' });
@@ -30,13 +31,15 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then(() => console.log("DB Connection Succesful 😃 ✅"));
+    .then(() => console.log("DB Connection Successful 😃 ✅"));
 
 
 // ------- ROUTES -------
 app.use("/", viewRouter);
 
+// ---- For Backend API ---
 app.use("/farmer-one", farmerOneRouter); // farmer-one router
+app.use("/urban-farmers", urbanFarmerRouter);  //urban-farmer router
 
 
 // ------ LISTENING  ------

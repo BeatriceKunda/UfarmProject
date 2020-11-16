@@ -61,7 +61,7 @@ body#page-top
                         .topbar-divider.d-none.d-sm-block
                         li.nav-item.dropdown.no-arrow
                             a.nav-link.dropdown-toggle#userDropdown(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                                span.mr-2.d-none.d-lg-inline.text-gray-600.small Agricultural Officer
+                                span.mr-2.d-none.d-lg-inline.text-gray-600.small Farmer One
                                 img.img-profile.rounded-circle(src="/img/undraw_profile.svg")
                             .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown")
                                 a.dropdown-item(href="#") Profile &nbsp;
@@ -129,103 +129,31 @@ body#page-top
                                     thead
                                         tr
                                             th Name
-                                            th Produce Type
-                                            th Unit Price (UGX)
-                                            th Mode of Payment
-                                            th Mode of Delivery
-                                            th Orders Received
+                                            th Ward
+                                            th Contact
+                                            th NIN
+                                            th Registration Date
                                     tbody
-                                        tr
-                                            td Abdu Rashid
-                                            td organic
-                                            td 10,000
-                                            td cash
-                                            td pick up
-                                            td 22
-                                        tr
-                                            td Katunu Abraham
-                                            td organic
-                                            td 9,000
-                                            td mobile money
-                                            td home delivery
-                                            td 25
-                                        tr
-                                            td Kakooza Jerry
-                                            td non organic
-                                            td 15,000
-                                            td both
-                                            td both
-                                            td 45
-                                        tr
-                                            td Jessica Atim
-                                            td organic
-                                            td 12,000
-                                            td cash
-                                            td both
-                                            td 10
-                                        tr
-                                            td Kasozi Richard
-                                            td organic
-                                            td 5,000
-                                            td mobile money
-                                            td home delivery
-                                            td 57
-                                        tr
-                                            td Aisha Nambi
-                                            td organic
-                                            td 8,000
-                                            td cash
-                                            td pick up
-                                            td 77
-                                        tr
-                                            td Mugenyi Roy
-                                            td non organic
-                                            td 18,000
-                                            td mobile money
-                                            td home delivery
-                                            td 36
-                                        tr
-                                            td Kanyankole Ivan
-                                            td organic
-                                            td 16,000
-                                            td mobile mobey 
-                                            td both
-                                            td 7
-                                        tr
-                                            td Odongkara Francis
-                                            td organic
-                                            td 12,000
-                                            td cash
-                                            td pick up
-                                            td 19
-                                        tr
-                                            td Rwot Lenny
-                                            td organic
-                                            td 25,000
-                                            td both
-                                            td both
-                                            td 42
-                                        tr
-                                            td Mugisha Anthony
-                                            td non organic
-                                            td 22,000
-                                            td both
-                                            td pick up
-                                            td 23
-                                        tr
-                                            td Ankunda Luna
-                                            td organic
-                                            td 10,000
-                                            td both
-                                            td both
-                                            td 96
-                                        tr
-                                            td Kitandwe Cosmas
-                                            td non organic
-                                            td 14,000
-                                            td cash
-                                            td home delivery
-                                            td 17
+                                        each urbanFarmer in urbanFarmers
+                                            tr
+                                                td= urbanFarmer.name
+                                                td= urbanFarmer.ward 
+                                                td= urbanFarmer.phoneNumber
+                                                td= urbanFarmer.nin
+                                                td= prettyDate(urbanFarmer.registeredOn)
+                                        
+                                        //-     td Katunu Abraham
+                                        //-     td Kakooza Jerry
+                                        //-     td Jessica Atim
+                                        //-     td Kasozi Richard
+                                        //-     td Aisha Nambi
+                                        //-     td Mugenyi Roy
+                                        //-     td Kanyankole Ivan
+                                        //-     td Odongkara Francis
+                                        //-     td Rwot Lenny
+                                        //-     td Mugisha Anthony
+                                        //-     td Ankunda Luna
+                                        //-     td Kitandwe Cosmas
 
             footer.sticky-footer.bg-white
                 .container.my-auto

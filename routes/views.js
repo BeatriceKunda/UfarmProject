@@ -16,5 +16,6 @@ router.get('/farmer-one/:id', agricOfficerviewsController.editFarmerOne)
 
 // ------- Farmer One ---------
 router.get("/fo-dashboard", farmerOneViewsController.dashboard);
+router.get("/add-urban-farmer", farmerOneViewsController.addUrbanFarmer);
 
 module.exports = router;

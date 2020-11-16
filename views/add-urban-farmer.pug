@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+html(lang="en")
+
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title Add UF
+  
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css')
+  
+  link(href='vendor/fontawesome-free/css/all.min.css' rel='stylesheet' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' rel='stylesheet')
+ 
+  link(href='css/sb-admin-2.css' rel='stylesheet')
+
+#wrapper
+  
+  ul#accordionSidebar.navbar-nav.bg-gradient-custom.sidebar.sidebar-dark.accordion
+    
+    a.sidebar-brand.d-flex.align-items-center.justify-content-center(href='/fo-dashboard')
+      .sidebar-brand-icon.rotate-n-15
+        i.fas.fa-tractor
+      .sidebar-brand-text.mx-3
+        img.img-fluid(src='img/UFARM.png')
+    
+    hr.sidebar-divider.my-0
+    
+    li.nav-item.active
+      a.nav-link(href='/fo-dashboard')
+        span Dashboard
+    
+    hr.sidebar-divider
+    
+    .sidebar-heading Farmer One
+    
+    li.nav-item
+      a.nav-link(href='/add-urban-farmer')
+        i.fas.fa-fw.fa-user
+        span Add Urban Farmer
+    
+    li.nav-item
+      a.nav-link(href='/produce-approval')
+        i.fas.fa-fw.fa-users
+        span Produce Approval
+        span.badge.badge-warning.badge-counter 18
+    
+    hr.sidebar-divider.d-none.d-md-block
+    
+    .text-center.d-none.d-md-inline
+      button#sidebarToggle.rounded-circle.border-0
+  
+  
+  #content-wrapper.d-flex.flex-column
+    
+    #content
+    
+      nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+     
+        button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+          i.fa.fa-bars
+       
+        ul.navbar-nav.ml-auto
+          
+          li.nav-item.dropdown.no-arrow.d-sm-none
+            a#searchDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.fas.fa-search.fa-fw
+           
+            .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby='searchDropdown')
+              form.form-inline.mr-auto.w-100.navbar-search
+                .input-group
+                  input.form-control.bg-light.border-0.small(type='text' placeholder='Search for...' aria-label='Search' aria-describedby='basic-addon2')
+                  .input-group-append
+                    button.btn.btn-custom(type='button')
+                      i.fas.fa-search.fa-sm
+          .topbar-divider.d-none.d-sm-block
+         
+          li.nav-item.dropdown.no-arrow
+            a#userDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              span.mr-2.d-none.d-lg-inline.text-gray-600.small Farmer One
+              img.img-profile.rounded-circle(src='img/undraw_profile.svg')
+           
+            .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby='userDropdown')
+              a.dropdown-item(href='#')
+                i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                |                                         Profile
+              a.dropdown-item(href='#')
+                i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                |                                         Settings
+              .dropdown-divider
+              a.dropdown-item(href='#' data-toggle='modal' data-target='#logoutModal')
+                i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                |                                         Logout
+     
+      .container-fluid
+        
+        h1.h3.mb-2.text-gray-800
+          | Add New Urban Farmer
+        .container
+          .card.o-hidden.border-0.shadow-lg.my-5
+            .card-body.p-0
+              
+              .p-5
+                .text-center
+                  h1.h4.text-gray-900.mb-4
+                    | Add Urban Farmer Details
+                form.user
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      input#exampleFirstName.form-control.form-control-user(type='text' placeholder='First Name')
+                    .col-sm-6
+                      input#exampleLastName.form-control.form-control-user(type='text' placeholder='Last Name')
+                  .form-group
+                    input#exampleInputEmail.form-control.form-control-user(type='email' placeholder='Email Address')
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      .form-check
+                        input#genderMale.form-check-input(type='radio' name='gender' value='option1')
+                        label.form-check-label(for='genderMale')
+                          | Male
+                    .col-sm-6.mb-3.mb-sm-0
+                      .form-check
+                        input#genderFemale.form-check-input(type='radio' name='gender' value='option2')
+                        label.form-check-label(for='genderFemale')
+                          | Female
+                  .form-group.row
+                    .col-md-6
+                     
+                      .form-group.mb-4.date-picker
+                        .datepicker.date.input-group.p-0.shadow-sm
+                          input#birthDate.form-control.py-4.px-4(type='text' placeholder='Date of Birth')
+                          .input-group-append
+                            span.input-group-text.px-4
+                              i.fas.fa-calendar-alt
+                      
+                    .col-md-6
+                     
+                      .form-group.mb-4.date-picker
+                        .datepicker.date.input-group.p-0.shadow-sm
+                          input#registrationDate.form-control.py-4.px-4(type='text' placeholder='Date of Registration')
+                          .input-group-append
+                            span.input-group-text.px-4
+                              i.fas.fa-calendar-alt
+                      
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      input#nin.form-control.form-control-user(type='text' placeholder='NIN')
+                    .col-sm-6.mb-3.mb-sm-0
+                      input#ward.form-control.form-control-user(type='text' placeholder='Ward Name')
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      input#password.form-control.form-control-user(type='password' placeholder='Password')
+                    .col-sm-6
+                      input#passwordConfirm.form-control.form-control-user(type='password' placeholder='Repeat Password')
+                  hr
+                  .form-group.row
+                    .col-sm-6.mb-3.mb-sm-0
+                      a.btn.btn-outline-danger.btn-user.btn-block(href='/fo-dashboard')
+                        i.fas.fa-ban
+                        |                                                         Cancel
+                    .col-sm-6.mb-3.mb-sm-0
+                      button.btn.btn-custom.btn-user.btn-block(type='submit')
+                        i.fas.fa-plus
+                        |                                                         Register New UF
+     
+    footer.sticky-footer.bg-white
+      .container.my-auto
+        .copyright.text-center.my-auto
+          span Copyright &copy; U Farm 2020
+    
+#logoutModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title
+          | Ready to Leave?
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        | Select &quot;Logout&quot; below if you are ready to end your
+        | current session.
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal')
+          | Cancel
+        a.btn.btn-custom(href='/login') Logout
+
+script(src='vendor/jquery/jquery.min.js')
+script(src='vendor/bootstrap/js/bootstrap.bundle.min.js')
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js')
+
+script(src='vendor/jquery-easing/jquery.easing.min.js')
+
+script(src='js/sb-admin-2.min.js')
+script.
+  // INITIALIZE DATEPICKER PLUGIN
+  $(".datepicker").datepicker({
+  clearBtn: true,
+  format: "dd/mm/yyyy",
+  });
