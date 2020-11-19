@@ -1,0 +1,232 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(name="description" content="")
+        meta(name="author" content="")
+        title FO Dashboard
+        //- Custom fonts for this template
+        link(href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css")
+        link(href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet")
+        //- Custom styles for this template
+        link(href="/css/sb-admin-2.css" rel="stylesheet")
+        //- Custom styles for this page
+        link(href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet")
+    body#page-top
+        //- Page Wrapper
+        #wrapper
+            //- Sidebar
+            ul#accordionSidebar.navbar-nav.bg-gradient-custom.sidebar.sidebar-dark.accordion
+                //- Sidebar - Brand
+                a.sidebar-brand.d-flex.align-items-center.justify-content-center(href="/fo-dashboard")
+                    .sidebar-brand-icon.rotate-n-15
+                        i.fas.fa-tractor
+                    .sidebar-brand-text.mx-3
+                        img.img-fluid(src="/img/UFARM.png")
+                //- Divider
+                hr.sidebar-divider.my-0
+                //- Nav Item - Dashboard
+                li.nav-item.active
+                    a.nav-link(href="/fo-dashboard")
+                        span Dashboard
+                //- Divider
+                hr.sidebar-divider
+                //- Heading
+                .sidebar-heading Urban Farmer
+                //- Nav Item - Add FO
+                li.nav-item
+                    a.nav-link(href="/add-urban-farmer")
+                        i.fas.fa-fw.fa-user
+                        span Add Urban Farmer
+                //- Nav Item - View All FOs
+                li.nav-item
+                    a.nav-link(href="/produce-approval")
+                        i.fas.fa-fw.fa-users
+                        span Produce Approvals
+                        span.badge.badge-warning.badge-counter 18
+                //- Divider
+                hr.sidebar-divider.d-none.d-md-block
+                //- Sidebar Toggler (Sidebar)
+                .text-center.d-none.d-md-inline
+                    button#sidebarToggle.rounded-circle.border-0
+            //- End of Sidebar
+            //- Content Wrapper
+            #content-wrapper.d-flex.flex-column
+                //- Main Content
+                #content
+                    //- Topbar
+                    nav.navbar.navbar-expand.navbar-light.bg-white.topbar.mb-4.static-top.shadow
+                        //- Sidebar Toggle (Topbar)
+                        button#sidebarToggleTop.btn.btn-link.d-md-none.rounded-circle.mr-3
+                            i.fa.fa-bars
+                        //- Topbar Navbar
+                        ul.navbar-nav.ml-auto
+                            //- Nav Item - Search Dropdown (Visible Only XS)
+                            li.nav-item.dropdown.no-arrow.d-sm-none
+                                a#searchDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                    i.fas.fa-search.fa-fw
+                                //- Dropdown - Messages
+                                .dropdown-menu.dropdown-menu-right.p-3.shadow.animated--grow-in(aria-labelledby="searchDropdown")
+                                    form.form-inline.mr-auto.w-100.navbar-search
+                                        .input-group
+                                            input.form-control.bg-light.border-0.small(type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2")
+                                            .input-group-append
+                                                button.btn.btn-custom(type="button")
+                                                    i.fas.fa-search.fa-sm
+                            .topbar-divider.d-none.d-sm-block
+                            //- Nav Item - User Information
+                            li.nav-item.dropdown.no-arrow
+                                a#userDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+                                    span.mr-2.d-none.d-lg-inline.text-gray-600.small Farmer One
+                                    img.img-profile.rounded-circle(src="/img/undraw_profile.svg")
+                                //- Dropdown - User Information
+                                .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown")
+                                    a.dropdown-item(href="#")
+                                        i.fas.fa-user.fa-sm.fa-fw.mr-2.text-gray-400
+                                        |                     Profile
+                                    a.dropdown-item(href="#")
+                                        i.fas.fa-cogs.fa-sm.fa-fw.mr-2.text-gray-400
+                                        |                     Settings
+                                    .dropdown-divider
+                                    a.dropdown-item(href="#" data-toggle="modal" data-target="#logoutModal")
+                                        i.fas.fa-sign-out-alt.fa-sm.fa-fw.mr-2.text-gray-400
+                                        |                     Logout
+                    //- End of Topbar
+                    //- Begin Page Content
+                    .container-fluid
+                        //- Page Heading
+                        h1.h3.mb-2.text-gray-800 Produce Approval
+                        //- DataTable
+                        .card.shadow.mb-4
+                            .card-header.py-3
+                                h6.m-0.font-weight-bold.text-custom
+                                    | Pending Product Approvals
+                            .card-body
+                                .table-responsive
+                                    table#dataTable.table.table-bordered(width="100%" cellspacing="0")
+                                        thead
+                                            tr
+                                                th Name
+                                                th Urban Farmer
+                                                th Produce Type
+                                                th Unit Price (UGX)
+                                                th Date Added
+                                        tbody
+                                            tr
+                                                td 
+                                                    a.custom-link(href=`#`) Matooke
+                                                td Abdu Rashid
+                                                td organic
+                                                td 10,000
+                                                td 19/11/2020
+                                            tr
+                                                td Pumpkins
+                                                td Katunu Abraham
+                                                td organic
+                                                td 9,000
+                                                td 19/11/2020
+                                            tr
+                                                td Rice
+                                                td Kakooza Jerry
+                                                td non organic
+                                                td 15,000
+                                                td 19/11/2020
+                                            tr
+                                                td Eggs
+                                                td Jessica Atim
+                                                td organic
+                                                td 12,000
+                                                td 19/11/2020
+                                            tr
+                                                td Chicken
+                                                td Kasozi Richard
+                                                td organic
+                                                td 5,000
+                                                td 19/11/2020
+                                            tr
+                                                td Milk
+                                                td Aisha Nambi
+                                                td organic
+                                                td 8,000
+                                                td 19/11/2020
+                                            tr
+                                                td Cheese
+                                                td Mugenyi Roy
+                                                td non organic
+                                                td 18,000
+                                                td 19/11/2020
+                                            tr
+                                                td Nakatti
+                                                td Kanyankole Ivan
+                                                td organic
+                                                td 16,000
+                                                td 19/11/2020
+                                            tr
+                                                td Spinach
+                                                td Odongkara Francis
+                                                td organic
+                                                td 12,000
+                                                td 19/11/2020
+                                            tr
+                                                td Irish Potatoes
+                                                td Rwot Lenny
+                                                td organic
+                                                td 25,000
+                                                td 19/11/2020
+                                            tr
+                                                td Sweet Potatoes
+                                                td Mugisha Anthony
+                                                td non organic
+                                                td 22,000
+                                                td 19/11/2020
+                                            tr
+                                                td Gonja
+                                                td Ankunda Luna
+                                                td organic
+                                                td 10,000
+                                                td 19/11/2020
+                                            tr
+                                                td Maize
+                                                td Kitandwe Cosmas
+                                                td non organic
+                                                td 14,000
+                                                td 19/11/2020
+                    //- /.container-fluid
+                //- End of Main Content
+                //- Footer
+                footer.sticky-footer.bg-white
+                    .container.my-auto
+                        .copyright.text-center.my-auto
+                            span Copyright © U Farm 2020
+                //- End of Footer
+            //- End of Content Wrapper
+        //- End of Page Wrapper
+        //- Logout Modal
+        #logoutModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
+            .modal-dialog(role="document")
+                .modal-content
+                    .modal-header
+                        h5#exampleModalLabel.modal-title Ready to Leave?
+                        button.close(type="button" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") ×
+                    .modal-body
+                        | Select "Logout" below if you are ready to end your current session.
+                    .modal-footer
+                        button.btn.btn-secondary(type="button" data-dismiss="modal")
+                            | Cancel
+                        a.btn.btn-custom(href="/login") Logout
+        //- Bootstrap core JavaScript
+        script(src="/vendor/jquery/jquery.min.js")
+        script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
+        //- Core plugin JavaScript
+        script(src="/vendor/jquery-easing/jquery.easing.min.js")
+        //- Custom scripts for all pages
+        script(src="/js/sb-admin-2.min.js")
+        //- Page level plugins
+        script(src="/vendor/datatables/jquery.dataTables.min.js")
+        script(src="/vendor/datatables/dataTables.bootstrap4.min.js")
+        //- Page level custom scripts
+        script(src="/js/demo/datatables-demo.js")
+

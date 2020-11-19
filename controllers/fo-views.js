@@ -6,8 +6,12 @@ const dashboard = async (req, res) => {
     res.status(200).render("fo-dashboard", { urbanFarmers });
 };
 
-const addUrbanFarmer = async  (req, res) =>  {
+const addUrbanFarmer = async (req, res) => {
     res.status(200).render("add-urban-farmer");
 }
 
-module.exports = { dashboard, addUrbanFarmer};
+const produceApproval = async (req, res) => {
+    res.status(200).render("produce-approval");
+}
+
+module.exports = { dashboard, addUrbanFarmer, produceApproval };
