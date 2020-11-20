@@ -18,5 +18,6 @@ router.get('/farmer-one/:id', agricOfficerviewsController.editFarmerOne)
 router.get("/fo-dashboard", farmerOneViewsController.dashboard);
 router.get("/add-urban-farmer", farmerOneViewsController.addUrbanFarmer);
 router.get("/produce-approval", farmerOneViewsController.produceApproval);
+router.get("/produce-details/:id", farmerOneViewsController.produceDetails);
 
 module.exports = router;

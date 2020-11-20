@@ -6,14 +6,12 @@ html(lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
         meta(name="description" content="")
         meta(name="author" content="")
-        title Produce Approval | UFarm
+        title Approve Produce | Ufarm
         //- Custom fonts for this template
         link(href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css")
         link(href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet")
         //- Custom styles for this template
         link(href="/css/sb-admin-2.css" rel="stylesheet")
-        //- Custom styles for this page
-        link(href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet")
     body#page-top
         //- Page Wrapper
         #wrapper
@@ -79,7 +77,7 @@ html(lang="en")
                             //- Nav Item - User Information
                             li.nav-item.dropdown.no-arrow
                                 a#userDropdown.nav-link.dropdown-toggle(href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
-                                    span.mr-2.d-none.d-lg-inline.text-gray-600.small Farmer One
+                                    span.mr-2.d-none.d-lg-inline.text-gray-600.small Agricultural Officer
                                     img.img-profile.rounded-circle(src="/img/undraw_profile.svg")
                                 //- Dropdown - User Information
                                 .dropdown-menu.dropdown-menu-right.shadow.animated--grow-in(aria-labelledby="userDropdown")
@@ -95,104 +93,73 @@ html(lang="en")
                                         |                     Logout
                     //- End of Topbar
                     //- Begin Page Content
-                    .container-fluid
-                        //- Page Heading
-                        h1.h3.mb-2.text-gray-800 Produce Approval
-                        //- DataTable
-                        .card.shadow.mb-4
-                            .card-header.py-3
-                                h6.m-0.font-weight-bold.text-custom
-                                    | Pending Product Approvals
-                            .card-body
-                                .table-responsive
-                                    table#dataTable.table.table-bordered(width="100%" cellspacing="0")
-                                        thead
-                                            tr
-                                                th Name
-                                                th Urban Farmer
-                                                th Produce Type
-                                                th Unit Price (UGX)
-                                                th Date Added
-                                        tbody
-                                            tr
-                                                td 
-                                                    a.custom-link(href=`/produce-details/918237123`) Matooke
-                                                td Abdu Rashid
-                                                td organic
-                                                td 10,000
-                                                td 19/11/2020
-                                            tr
-                                                td Pumpkins
-                                                td Katunu Abraham
-                                                td organic
-                                                td 9,000
-                                                td 19/11/2020
-                                            tr
-                                                td Rice
-                                                td Kakooza Jerry
-                                                td non organic
-                                                td 15,000
-                                                td 19/11/2020
-                                            tr
-                                                td Eggs
-                                                td Jessica Atim
-                                                td organic
-                                                td 12,000
-                                                td 19/11/2020
-                                            tr
-                                                td Chicken
-                                                td Kasozi Richard
-                                                td organic
-                                                td 5,000
-                                                td 19/11/2020
-                                            tr
-                                                td Milk
-                                                td Aisha Nambi
-                                                td organic
-                                                td 8,000
-                                                td 19/11/2020
-                                            tr
-                                                td Cheese
-                                                td Mugenyi Roy
-                                                td non organic
-                                                td 18,000
-                                                td 19/11/2020
-                                            tr
-                                                td Nakatti
-                                                td Kanyankole Ivan
-                                                td organic
-                                                td 16,000
-                                                td 19/11/2020
-                                            tr
-                                                td Spinach
-                                                td Odongkara Francis
-                                                td organic
-                                                td 12,000
-                                                td 19/11/2020
-                                            tr
-                                                td Irish Potatoes
-                                                td Rwot Lenny
-                                                td organic
-                                                td 25,000
-                                                td 19/11/2020
-                                            tr
-                                                td Sweet Potatoes
-                                                td Mugisha Anthony
-                                                td non organic
-                                                td 22,000
-                                                td 19/11/2020
-                                            tr
-                                                td Gonja
-                                                td Ankunda Luna
-                                                td organic
-                                                td 10,000
-                                                td 19/11/2020
-                                            tr
-                                                td Maize
-                                                td Kitandwe Cosmas
-                                                td non organic
-                                                td 14,000
-                                                td 19/11/2020
+                    .container.mt-4.mw-100
+                        h1.h3.mb-2.text-gray-800 Produce Details
+                        hr.mt-0.mb-4
+                        .row
+                            .col-xl-4
+                                //- Profile picture card
+                                .card
+                                    .card-header.text-custom Produce Picture
+                                    .text-center(style="padding: 0.15rem")
+                                        img.img-fluid(data-toggle="modal" data-target="#imageModal" src="/img/produce-1.jpeg" style="height: auto; cursor: zoom-in" alt="")
+                            .col-xl-8
+                                //- Account details card
+                                .card.mb-4
+                                    //- <div class="card-header text-custom">Account Details</div>
+                                    .card-body
+                                        form
+                                            //- Form Group (username)
+                                            button.btn.btn-custom(type="button")
+                                                | Approve Product
+                                            hr.sidebar-divider
+                                            .form-row
+                                                //- Form Group (name)
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="productName")
+                                                        | Product Name
+                                                    input#productName.form-control(type="text" value="Vegetables" readonly="")
+                                                //- Form Group (ward)
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="ward") Ward
+                                                    input#ward.form-control(type="text" value="Nansana" readonly="")
+                                            //- Form Row
+                                            .form-row
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="dateListed") Date Listed
+                                                    input#dateListed.form-control(type="text" value="19/11/2020  (1 day ago)" readonly="")
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="produceType") Produce Type
+                                                    input#produceType.form-control(type="text" value="Organic" readonly="")
+                                            //- Form Row
+                                            .form-row
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="price") Unit Price (UGX)
+                                                    input#price.form-control(type="text" value="10,000" readonly="")
+                                                //- Form Group (location)
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="quantity") Quantity Available
+                                                    input#quantity.form-control(type="text" value="10 Kg" readonly="")
+                                            //- Form Group (email address)
+                                            .form-group
+                                                label.small.mb-1(for="urbanFarmer") Urban Farmer
+                                                input#urbanFarmer.form-control(type="text" value="Abdu Shareef" readonly="")
+                                            //- Form Row
+                                            .form-row
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="payment") Mode of Payment
+                                                    input#payment.form-control(type="text" value="Mobile Money" readonly="")
+                                                .form-group.col-md-6
+                                                    label.small.mb-1(for="delivery") Mode of Delivery
+                                                    input#delivery.form-control(type="text" value="Pick Up" readonly="")
+                                            .form-group
+                                                label.small.mb-1(for="comments")
+                                                    | Add Comments (for Rejection)
+                                                textarea#exampleFormControlTextarea1.form-control.form-control-solid(rows="3")
+                                            hr.sidebar-divider
+                                            button.btn.btn-outline-danger(type="button")
+                                                | Reject Product
+                    //- /.container-fluid
                     //- /.container-fluid
                 //- End of Main Content
                 //- Footer
@@ -217,6 +184,18 @@ html(lang="en")
                         button.btn.btn-secondary(type="button" data-dismiss="modal")
                             | Cancel
                         a.btn.btn-custom(href="/login") Logout
+        //- Produce Image Modal
+        #imageModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true")
+            .modal-dialog.modal-lg(role="document")
+                .modal-content
+                    .modal-header
+                        h5#imageModalLabel.modal-title Produce Picture
+                        button.close(type="button" data-dismiss="modal" aria-label="Close")
+                            span(aria-hidden="true") ×
+                    img.img-fluid(src="/img/produce-1.jpeg" alt="")
+                    .modal-footer
+                        button.btn.btn-custom(type="button" data-dismiss="modal")
+                            | Close
         //- Bootstrap core JavaScript
         script(src="/vendor/jquery/jquery.min.js")
         script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
@@ -224,9 +203,4 @@ html(lang="en")
         script(src="/vendor/jquery-easing/jquery.easing.min.js")
         //- Custom scripts for all pages
         script(src="/js/sb-admin-2.min.js")
-        //- Page level plugins
-        script(src="/vendor/datatables/jquery.dataTables.min.js")
-        script(src="/vendor/datatables/dataTables.bootstrap4.min.js")
-        //- Page level custom scripts
-        script(src="/js/demo/datatables-demo.js")
 
