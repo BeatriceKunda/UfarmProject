@@ -87,6 +87,10 @@ body#page-top
                                     img.img-account-profile.rounded-circle.mb-2(src=`/img/${farmerOne.profilePic}.svg` style="height: 10rem")
                                     .small.font-italic.text-muted.mb-4 JPG or PNG no larger than 5 MB
                                     button.btn.btn-custom(type="button") Upload new image
+                                    if (!farmerOne.ward)
+                                        hr
+                                        a.btn.btn-outline-danger(role="button" href=`/assign-ward/${farmerOne._id}`) Assign Ward
+
                         .col-xl-8
                             .card.mb-4
                                 .card-header.text-custom Account Details
@@ -131,7 +135,10 @@ body#page-top
                                         .form-row
                                             .form-group.col-md-4
                                                 label.small.mb-1(for="ward") Ward
-                                                input.form-control#ward(type="text" value=`${farmerOne.ward}` readonly)
+                                                if(farmerOne.ward)
+                                                    input.form-control#ward(type="text" value=`${farmerOne.ward}` readonly)
+                                                else
+                                                    input.form-control#ward(type="text" placeholder="Not Set" readonly)
                                             .form-group.col-md-4
                                                 label.small.mb-1(for="residenceType") Residence Type
                                                 input.form-control#residenceType(type="text" value=`${farmerOne.residenceType}` readonly style="text-transform:capitalize")

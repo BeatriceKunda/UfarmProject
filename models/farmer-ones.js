@@ -53,4 +53,14 @@ const FarmerOne = new Schema({
     profilePic: String
 });
 
+FarmerOne.pre("save", async function (next) {
+
+    // set a default profile Pic depending on gender
+    this.profilePic = this.gender === 'Male' ? 'undraw_profile_pic_ic5t' : 'undraw_profile_1';
+
+    // this ensures that you the call next function in the middleware stack
+    next();
+});
+
+
 module.exports = mongoose.model("FarmerOne", FarmerOne);

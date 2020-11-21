@@ -19,6 +19,7 @@ const port = process.env.PORT || 3000;
 // ----- MIDDLEWARE -----
 app.use(morgan("combined"));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ------- STATIC -------
 app.set("view engine", "pug");

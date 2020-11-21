@@ -80,12 +80,9 @@ body#page-top
                                 .p-5
                                     .text-center
                                         h1.h4.text-gray-900.mb-4 Add Farmer One Details
-                                    form.user
-                                        .form-group.row
-                                            .col-sm-6.mb-3.mb-sm-0
-                                                input.form-control.form-control-user#exampleFirstName(type="text" placeholder="First Name" name="firstName")
-                                            .col-sm-6
-                                                input.form-control.form-control-user#exampleLastName(type="text" placeholder="Last Name" name="lastName")
+                                    form.user(action='/add-fo-form' method='POST' enctype='/multipart/form-data')
+                                        .form-group
+                                            input.form-control.form-control-user#exampleFirstName(type="text" placeholder="Name" name="name")
                                         
                                         .form-group
                                             input.form-control.form-control-user#exampleInputEmail(type="email" placeholder="Email Address" name="email")
@@ -93,12 +90,28 @@ body#page-top
                                         .form-group.row
                                             .col-sm-6.mb-3.mb-sm-0
                                                 .form-check
-                                                    input.form-check-input#genderMale(type="radio", name="gender" value="Male")
+                                                    input.form-check-input#genderMale(type="radio" name="gender" value="Male")
                                                     label.form-check-label(for="genderMale") Male
                                             .col-sm-6.mb-3.mb-sm-0
                                                 .form-check
-                                                    input.form-check-input#genderFemale(type="radio", name="gender" value="Female")
+                                                    input.form-check-input#genderFemale(type="radio" name="gender" value="Female")
                                                     label.form-check-label(for="genderFemale") Female
+                                        .form-group.row
+                                            .col-sm-6.mb-3.mb-sm-0
+                                                label(for='phoneNumber') Phone Number
+                                                input.form-control.form-control-user#phoneNumber(type="tel" name="phoneNumber" placeholder="Enter Phone Number")
+                                            .col-sm-6.mb-3.mb-sm-0
+                                                .form-group
+                                                    label(for='residencetype') Residence Type
+                                                    select#residencetype.form-control(name="residenceType")
+                                                        option permanent
+                                                        option temporary
+                                        .form-group.row
+                                            .col-sm-6.mb-3.mb-sm-0
+                                                input.form-control.form-control-user#periodOfStay(type="text", name="periodOfWardStay" placeholder="Period of Stay in Ward")
+                                            .col-sm-6.mb-3.mb-sm-0
+                                                input.form-control.form-control-user#homeDirections(type="text", name="homeDirections" placeholder="Directions to Home")
+
                                         
                                         .form-group.row
                                             .col-md-6
@@ -116,17 +129,20 @@ body#page-top
                                                             span.input-group-text.px-4
                                                                 i.fas.fa-calendar-alt
                                         
-                                        .form-group.row
-                                            .col-sm-6.mb-3.mb-sm-0
-                                                input.form-control.form-control-user#nin(type="text" placeholder="NIN" name="nin")
-                                            .col-sm-6.mb-3.mb-sm-0
-                                                input.form-control.form-control-user#ward(type="text" placeholder="Ward Name" name="ward")
+                                        .form-group
+                                            input.form-control.form-control-user#nin(type="text" placeholder="NIN" name="nin")
+                                        
+                                        .form-row
+                                            .form-group.col-md-12
+                                                label.small.mb-1(for="activities") Activities
+                                                textarea.form-control#activities(name="activities", cols="30", rows="5" placeholder="Enter Farmer One's Activities")
                                         
                                         .form-group.row
                                             .col-sm-6.mb-3.mb-sm-0
                                                 input.form-control.form-control-user#password(type="password", name="password" placeholder="Password")
                                             .col-sm-6
                                                 input.form-control.form-control-user#passwordConfirm(type="password", name="passwordConfirm" placeholder="Repeat Password")
+                                        
 
                                         hr
 
@@ -164,7 +180,7 @@ body#page-top
     script(src="/vendor/jquery-easing/jquery.easing.min.js")
     script(src="/js/sb-admin-2.min.js")
     script.
-        $(".datepicker").datepicker({ clearBtn: true, format: "dd/mm/yyyy" });
+        $(".datepicker").datepicker({ clearBtn: true, format: "yyyy-mm-dd" });
 
 
 
