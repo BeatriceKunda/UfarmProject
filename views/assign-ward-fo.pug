@@ -88,10 +88,13 @@ body#page-top
                             .card.mb-4
                                 .card-header.text-custom Assign Ward
                                 .card-body
-                                    form
+                                    form.assign-ward-form
                                         .form-group
                                             label.small.mb-1(for="name") Name
                                             input.form-control#name(type="text" value=`${farmerOne.name}` readonly)
+                                        .form-group(style="display: none;")
+                                            label.small.mb-1(for="id") ID
+                                            input.form-control#id(type="text" value=`${farmerOne._id}` readonly)
                                         .form-row
                                             .form-group.col-md-6
                                                 label.small.mb-1(for="ward") Ward
@@ -116,10 +119,12 @@ body#page-top
                     a.btn.btn-custom(href="/login") Logout
     
     
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js")
     script(src="/vendor/jquery/jquery.min.js")
     script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
     script(src="/vendor/jquery-easing/jquery.easing.min.js")
     script(src="/js/sb-admin-2.min.js")
+    script(src="/js/assign-ward.js")
 
 -function prettyDate(date){
     -var d = date.getDate();
