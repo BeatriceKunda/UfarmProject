@@ -1,4 +1,5 @@
 const FarmerOnes = require("../models/farmer-ones");
+const customId = require("custom-id");
 
 // Helper Function to filter out fields which whould not be updated in the PATCH/PUT route
 // It only takes in the allowed fields
@@ -26,6 +27,9 @@ const addNewFarmerOne = async (req, res) => {
     try {
         const farmerOne = await FarmerOnes.create(req.body);
         //  TODO: Add unique ID to FO
+        farmerOne.uniqueNumber = customId({});
+        await farmerOne.save({ validateBeforeSave: false });
+
         res.status(201).json({ message: "success", farmerOne });
     } catch (error) {
         // console.log(error);

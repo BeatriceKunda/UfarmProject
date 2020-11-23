@@ -1,3 +1,4 @@
+const customId = require("custom-id");
 const FarmerOnes = require("../models/farmer-ones");
 
 const login = (req, res) => {
@@ -24,6 +25,8 @@ const addFarmerOneForm = async (req, res) => {
     delete req.body.ward;
     const farmerOne = await FarmerOnes.create(req.body);
     //  TODO: Add unique ID to FO
+    farmerOne.uniqueNumber = customId({});
+    await farmerOne.save({ validateBeforeSave: false });
     res.status(200).render("assign-ward-fo", { farmerOne });
 }
 
