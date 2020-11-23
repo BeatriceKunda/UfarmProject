@@ -95,10 +95,13 @@ body#page-top
                             .card.mb-4
                                 .card-header.text-custom Account Details
                                 .card-body
-                                    form
+                                    form.fo-profile-form
                                         .form-group
                                             label.small.mb-1(for="name") Name
                                             input.form-control#name(type="text" value=`${farmerOne.name}` readonly)
+                                        .form-group(style="display: none;")
+                                            label.small.mb-1(for="id") ID
+                                            input.form-control#id(type="text" value=`${farmerOne._id}` readonly)
                                         .form-row
                                             .form-group.col-md-6
                                                 label.small.mb-1(for="registeredOn") Registered On
@@ -121,8 +124,8 @@ body#page-top
                                                     input.form-control#status(type="text" value='Inactive' readonly)
                                         .form-row
                                             .form-group.col-md-4
-                                                label.small.mb-1(for="inputPhone") Phone Number
-                                                input.form-control#inputPhone(type="tel" name="phoneNumber" placeholder="Phone number" value=`${farmerOne.phoneNumber}`)
+                                                label.small.mb-1(for="phoneNumber") Phone Number
+                                                input.form-control#phoneNumber(type="tel" name="phoneNumber" placeholder="Phone number" value=`${farmerOne.phoneNumber}`)
                                             .form-group.col-md-4
                                                 label.small.mb-1(for="inputEmailAddress") Email Address
                                                 input.form-control#inputEmailAddress(type="email" placeholder="Email address" value=`${farmerOne.email}` readonly)
@@ -176,6 +179,8 @@ body#page-top
     script(src="/vendor/bootstrap/js/bootstrap.bundle.min.js")
     script(src="/vendor/jquery-easing/jquery.easing.min.js")
     script(src="/js/sb-admin-2.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js")
+    script(src="/js/edit-farmer-one.js")
 
 -function prettyDate(date){
     -var d = date.getDate();
